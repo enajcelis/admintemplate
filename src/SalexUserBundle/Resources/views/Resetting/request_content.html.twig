@@ -1,0 +1,22 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+    <div>
+        {% if invalid_username is defined %}
+            <div class="alert alert-danger alert-dismissible">{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</div>
+        {% endif %}
+        <p>Ingresa tu usuario o correo electrónico para restablecer la contraseña. </p>
+        <div class="form-group has-feedback">
+            <input type="text" id="username" name="username" required="required" class="form-control" placeholder="{{ 'resetting.request.username'|trans }}" />
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+    </div>
+    <div>
+        <input type="submit" value="{{ 'resetting.request.submit'|trans }}" class="btn btn-primary btn-block btn-flat" />
+    </div>
+    <div>
+        <p align="center">
+            <a href="{{ path('fos_user_security_login') }}" role="button">Volver al inicio</a>
+        </p>
+    </div>
+</form>
